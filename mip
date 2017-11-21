@@ -1,0 +1,28 @@
+#! /bin/bash
+
+# 启动，关闭，更新的 docker 脚本
+commandTip(){
+  echo 'MIP COMMAND'
+  echo '=============================================='
+  echo 'mip install'
+  echo 'mip start'
+  echo 'mip update'
+  echo '=============================================='
+}
+
+if [ ! -n "$1" ]; then
+  commandTip
+else
+  if [ "$1" = "install" ]; then
+  	sudo docker images | grep zuston/mipdocker:0.01 | docker rmi zuston/mipdocker:0.01
+  	sudo docker build -t zuston/mipdocker:0.01 .
+  elif [ "$1" = "start" ]; then
+  	sudo docker run -p 127.0.0.1:80:80 -p 127.0.0.1:8083:8083 -p 6379:6379 -d -v ~/MIP:/MIP-CODE --name mipCore0.0.1 zuston/mipdocker:0.01
+  elif [ "$1" = "update" ]; then
+  	sudo docker ps -a | grep mipCore0.0.1 | awk '{print $1}' | xargs -I {} docker stop {}
+  	sudo docker ps -a | grep mipCore0.0.1 | awk '{print $1}' | xargs -I {} docker rm {}
+  	sudo docker run -p 127.0.0.1:80:80 -p 127.0.0.1:8083:8083 -p 6379:6379 -d -v ~/MIP:/MIP-CODE --name mipCore0.0.1 zuston/mipdocker:0.01
+  else
+    commandTip
+  fi
+fi
