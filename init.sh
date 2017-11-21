@@ -19,4 +19,7 @@ cd /MIP/openresty/nginx/sbin
 # 启动 redis
 nohup redis-server &
 
+# mongo 配置
+ln -s /MIP-CODE/mongo.properties /opt/
+
 cd /
