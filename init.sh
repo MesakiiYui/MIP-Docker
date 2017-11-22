@@ -23,3 +23,5 @@ nohup redis-server &
 ln -s /MIP-CODE/mongo.properties /opt/
 
 cd /
+
+tail -f /dev/null

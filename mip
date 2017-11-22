@@ -19,11 +19,11 @@ else
   elif [ "$1" = "start" ]; then
     sudo docker ps -a | grep mipCore0.0.1 | awk '{print $1}' | xargs -I {} sudo docker stop {}
   	sudo docker ps -a | grep mipCore0.0.1 | awk '{print $1}' | xargs -I {} sudo docker rm {}
-  	sudo docker run -p 127.0.0.1:80:80 -p 6379:6379  -v ~/MIP:/MIP-CODE -d --name mipCore0.0.1 zuston/mipdocker:0.01
+  	sudo docker run -p 127.0.0.1:80:80 -p 6379:6379  -v ~/MIP:/MIP-CODE -dit --name mipCore0.0.1 zuston/mipdocker:0.01
   elif [ "$1" = "update" ]; then
   	sudo docker ps -a | grep mipCore0.0.1 | awk '{print $1}' | xargs -I {} sudo docker stop {}
   	sudo docker ps -a | grep mipCore0.0.1 | awk '{print $1}' | xargs -I {} sudo docker rm {}
-  	sudo docker run -p 127.0.0.1:80:80 -p 6379:6379 -v ~/MIP:/MIP-CODE -d --name mipCore0.0.1 zuston/mipdocker:0.01
+  	sudo docker run -p 127.0.0.1:80:80 -p 6379:6379 -v ~/MIP:/MIP-CODE -dit --name mipCore0.0.1 zuston/mipdocker:0.01
   else
     commandTip
   fi
