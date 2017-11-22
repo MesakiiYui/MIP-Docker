@@ -3,6 +3,9 @@
 1. Dockerfile 为 docker 容器的配置文件
 2. init.sh 为 docker 容器启动时候的默认执行文件，是一些服务启动脚本
 3. mip 为控制容器的脚本, 支持 start, install, update 命令来控制容器
+### requirement
+1. 安装 docker, 推荐使用 daocloud 急速安装
+2. 安装 git, 公钥关联 github 账户
 ### quick start
 1. 把以下的代码 git clone 到 ~/MIP 下，包括 mongo 的配置文件  
 `mkdir ~/MIP`  
